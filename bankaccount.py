@@ -18,9 +18,22 @@ class BankAccount:
     def display_balance(self):
         print(f"Current balance: £{self.balance}")
 
+class SavingsAccount(BankAccount):
+    def __init__(self, account_number, account_holder, initial_balance = 0, interest_rate = 0.02):
+        super().__init__(account_number, account_holder, initial_balance)
+        self.interest_rate = interest_rate
+
+    def apply_interest(self):
+        interest = self.balance * self.interest_rate
+        self.deposit(interest)
+        print(f"Interest of £{interest} applied at a rate of {self.interest_rate * 100}%. New balance is £{self.balance}.")
 # Creating an instance of BankAccount class
-account = BankAccount("56765438", "Emilton", 100)
+'''account = BankAccount("56765438", "Emilton", 100)
 account.deposit(50)
 account.withdraw(30)
 account.display_balance()
-account.withdraw(170)
+account.withdraw(170)'''
+
+savings = SavingsAccount("87654321", "Bob", 500, 0.03)
+savings.display_balance()
+savings.apply_interest()
